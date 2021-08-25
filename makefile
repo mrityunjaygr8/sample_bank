@@ -29,4 +29,4 @@ migratedown: cmd-exists-migrate
 sqlc: cmd-exists-sqlc
 	sqlc generate
 
-.PHONY: dbstart dbstop dbcreate dbdrop migrateup migrateup sqlc
+.PHONY: dbstart dbstop dbcreate dbdrop migrateup migratedown sqlc
