@@ -15,17 +15,17 @@ Requires the following binaries to be installed:
 - [sqlc](https://github.com/kyleconroy/sqlc)
 
 There are the following `make` commands for ease of use:
-- dbstart
+- dbstart  
 Create a docker based instance of PostgreSQL 13, alpine flavor
-- dbstop
+- dbstop  
 Destroy the docker based instance of PostgreSQL 13, alpine flavor
-- dbcreate
+- dbcreate  
 Create a Database in the created PSQL container, name is defined in .env by DB_NAME
-- dbdrop
+- dbdrop  
 Drop the Database in the created PSQL container, name is defined in .env by DB_NAME
-- migrateup
+- migrateup  
 Apply all upward migrations
-- migratedown
+- migratedown  
 Apply all downward migrations, reset the DB to blank, except the schema table
-- sqlc
+- sqlc  
 Compile GO code based upon the specified queries using sqlc
