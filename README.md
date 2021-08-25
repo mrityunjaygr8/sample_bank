@@ -32,3 +32,5 @@ Apply all upward migrations
 Apply all downward migrations, reset the DB to blank, except the schema table
 - sqlc  
 Compile GO code based upon the specified queries using sqlc
+- test  
+Run the unit tests for the project
