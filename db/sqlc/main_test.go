@@ -7,21 +7,20 @@ import (
 	"testing"
 
 	_ "github.com/lib/pq"
+	"github.com/mrityunjaygr8/sample_bank/utils"
 )
 
 var testQueries *Queries
 var testDB *sql.DB
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://root:secret@localhost:5432/sample_bank?sslmode=disable"
-)
-
-// var dbSource = fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", os.Getenv("DB_USER"), os.Getenv("DB_PASS"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"))
-
 func TestMain(m *testing.M) {
 	var err error
-	testDB, err = sql.Open(dbDriver, dbSource)
+	config, err := utils.LoadConfig("./../..")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	testDB, err = sql.Open(config.DBDriver, config.GetDBString())
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
