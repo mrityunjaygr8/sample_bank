@@ -42,5 +42,5 @@ func LoadConfig(path string) (config Config, err error) {
 
 func (config *Config) GetDBString() string {
 	// return "postgresql://root:secret@localhost:5432/sample_bank?sslmode=disable"
-	return fmt.Sprintf("%s://%s:%s@%s:%s/%s/sslmode=disable", config.DBDriver, config.DBUser, config.DBPass, config.DBHost, config.DBPort, config.DBName)
+	return fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable", config.DBDriver, config.DBUser, config.DBPass, config.DBHost, config.DBPort, config.DBName)
 }
