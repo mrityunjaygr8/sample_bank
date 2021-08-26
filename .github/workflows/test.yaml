@@ -12,6 +12,7 @@ env:
   DB_PASS: ${{ secrets.DB_PASS }}
   DB_USER: ${{ secrets.DB_USER }}
   DB_HOST: ${{ secrets.DB_HOST }}
+  DB_DRIVER: ${{ secrets.DB_DRIVER }}
 jobs:
 
   test:
