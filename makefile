@@ -32,4 +32,7 @@ sqlc: cmd-exists-sqlc
 test: cmd-exists-go
 	go test -v -cover ./...
 
-.PHONY: dbstart dbstop dbcreate dbdrop migrateup migratedown sqlc test
+server: cmd-exists-go
+	go run main.go
+
+.PHONY: dbstart dbstop dbcreate dbdrop migrateup migratedown sqlc test server

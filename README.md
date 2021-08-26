@@ -34,3 +34,5 @@ Apply all downward migrations, reset the DB to blank, except the schema table
 Compile GO code based upon the specified queries using sqlc
 - test  
 Run the unit tests for the project
+- server
+Run the API server for the bank service
