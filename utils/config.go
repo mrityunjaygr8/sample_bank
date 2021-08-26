@@ -1,9 +1,12 @@
 package utils
 
 import (
+	"errors"
 	"fmt"
+	"os"
+	"path/filepath"
 
-	"github.com/spf13/viper"
+	"github.com/subosito/gotenv"
 )
 
 type Config struct {
@@ -17,17 +20,23 @@ type Config struct {
 }
 
 func LoadConfig(path string) (config Config, err error) {
-	viper.AddConfigPath(path)
-	viper.SetConfigType("env")
-
-	viper.AutomaticEnv()
-
-	err = viper.ReadInConfig()
+	p := filepath.Join(path, ".env")
+	err = gotenv.Load(p)
 	if err != nil {
-		return
+		if errors.Is(err, os.ErrNotExist) {
+			fmt.Println("Will Load from env and not file")
+			err = nil
+		} else {
+			return
+		}
 	}
-
-	err = viper.Unmarshal(&config)
+	config.DBDriver = os.Getenv("DB_DRIVER")
+	config.DBName = os.Getenv("DB_NAME")
+	config.DBHost = os.Getenv("DB_HOST")
+	config.DBPort = os.Getenv("DB_PORT")
+	config.DBUser = os.Getenv("DB_USER")
+	config.DBPass = os.Getenv("DB_PASS")
+	config.Address = os.Getenv("ADDRESS")
 	return
 }
 
