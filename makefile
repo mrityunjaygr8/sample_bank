@@ -22,9 +22,14 @@ dbdrop:
 migrateup: cmd-exists-migrate
 	migrate -path db/migration -database "postgresql://"${DB_USER}":"${DB_PASS}"@"${DB_HOST}":"${DB_PORT}"/"${DB_NAME}"?sslmode=disable" -verbose up
 
+migrateup1: cmd-exists-migrate
+	migrate -path db/migration -database "postgresql://"${DB_USER}":"${DB_PASS}"@"${DB_HOST}":"${DB_PORT}"/"${DB_NAME}"?sslmode=disable" -verbose up 1
 
 migratedown: cmd-exists-migrate
 	migrate -path db/migration -database "postgresql://"${DB_USER}":"${DB_PASS}"@"${DB_HOST}":"${DB_PORT}"/"${DB_NAME}"?sslmode=disable" -verbose down
+
+migratedown1: cmd-exists-migrate
+	migrate -path db/migration -database "postgresql://"${DB_USER}":"${DB_PASS}"@"${DB_HOST}":"${DB_PORT}"/"${DB_NAME}"?sslmode=disable" -verbose down 1
 
 sqlc: cmd-exists-sqlc
 	sqlc generate
@@ -38,4 +43,4 @@ server: cmd-exists-go
 mock: cmd-exists-mockgen
 	mockgen -package mockdb -destination db/mock/mock.go github.com/mrityunjaygr8/sample_bank/db/sqlc Store
 
-.PHONY: dbstart dbstop dbcreate dbdrop migrateup migratedown sqlc test server mock
+.PHONY: dbstart dbstop dbcreate dbdrop migrateup migratedown sqlc test server mock migratedown1 migrateup1

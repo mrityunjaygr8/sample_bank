@@ -29,8 +29,12 @@ Create a Database in the created PSQL container, name is defined in .env by DB_N
 Drop the Database in the created PSQL container, name is defined in .env by DB_NAME
 - migrateup  
 Apply all upward migrations
+- migrateup1
+Apply 1 upward migration
 - migratedown  
 Apply all downward migrations, reset the DB to blank, except the schema table
+- migratedown1
+Apply 1 downward migration
 - sqlc  
 Compile GO code based upon the specified queries using sqlc
 - test  
