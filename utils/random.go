@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"math/rand"
 	"reflect"
 	"strings"
@@ -45,4 +46,8 @@ func RandomMoney() int64 {
 func RandomCurrency() string {
 	mapKeys := reflect.ValueOf(currency).MapKeys()
 	return currency[mapKeys[rand.Intn(len(mapKeys))].Interface().(string)]
+}
+
+func RandomEmail() string {
+	return fmt.Sprintf("%s@example.com", RandomOwner())
 }
