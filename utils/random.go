@@ -2,6 +2,7 @@ package utils
 
 import (
 	"math/rand"
+	"reflect"
 	"strings"
 	"time"
 )
@@ -42,7 +43,6 @@ func RandomMoney() int64 {
 
 // RandomCurrency generates a random currency code
 func RandomCurrency() string {
-	currencies := []string{"EUR", "USD", "CAD"}
-	n := len(currencies)
-	return currencies[rand.Intn(n)]
+	mapKeys := reflect.ValueOf(currency).MapKeys()
+	return currency[mapKeys[rand.Intn(len(mapKeys))].Interface().(string)]
 }
