@@ -14,6 +14,7 @@ For running, requires the following environment variables in a file called ".env
 Requires the following binaries to be installed:
 - [docker](https://www.docker.com/get-started)
 - [migrate](https://github.com/golang-migrate/migrate)
+- [gomock](https://github.com/golang/mock)
 - [sqlc](https://github.com/kyleconroy/sqlc)
 
 #### Make Commands Avaiable
@@ -36,3 +37,5 @@ Compile GO code based upon the specified queries using sqlc
 Run the unit tests for the project
 - server
 Run the API server for the bank service
+- mock
+Create a mock DB stub using mockgen

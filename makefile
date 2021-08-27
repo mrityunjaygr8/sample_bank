@@ -35,4 +35,7 @@ test: cmd-exists-go
 server: cmd-exists-go
 	go run main.go
 
-.PHONY: dbstart dbstop dbcreate dbdrop migrateup migratedown sqlc test server
+mock: cmd-exists-mockgen
+	mockgen -package mockdb -destination db/mock/mock.go github.com/mrityunjaygr8/sample_bank/db/sqlc Store
+
+.PHONY: dbstart dbstop dbcreate dbdrop migrateup migratedown sqlc test server mock
